@@ -89,8 +89,6 @@ class JsPageMIddlware(object):
         # 这里对需要使用chrome访问的爬虫或者url进行筛选
         if spider.name == "lagou":
             spider.driver.get(request.url)
-            import time
-            time.sleep(3)
             print("访问{0}".format(request.url))
             return HtmlResponse(url=spider.driver.current_url, body=spider.driver.page_source, encoding='utf-8', request=request)
 

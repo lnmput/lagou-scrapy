@@ -56,6 +56,7 @@ DOWNLOADER_MIDDLEWARES = {
    #'Yangzie.middlewares.RandomUserAgentMiddlware': 543,
    'Yangzie.middlewares.JsPageMIddlware': 1,
    #'Yangzie.middlewares.MyCustomDownloaderMiddleware': 543,
+
 }
 RANDOM_UA_TYPE = 'random'
 
