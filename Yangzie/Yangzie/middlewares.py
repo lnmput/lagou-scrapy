@@ -81,20 +81,16 @@ class RandomProxyMiddlware(object):
         get_ip = GetIP()
         request.meta['proxy'] = get_ip.get_random_ip()
 
-from selenium import webdriver
+
 from scrapy.http import HtmlResponse
 
 class JsPageMIddlware(object):
-    def __init__(self):
-        self.driver = webdriver.Chrome()
-        super(JsPageMIddlware, self).__init__()
-
     def process_request(self, request, spider):
         # 这里对需要使用chrome访问的爬虫或者url进行筛选
         if spider.name == "lagou":
-            self.driver.get(request.url)
+            spider.driver.get(request.url)
             import time
             time.sleep(3)
             print("访问{0}".format(request.url))
-            return HtmlResponse(url=self.driver.current_url, body=self.driver.page_source, encoding='utf-8', request=request)
+            return HtmlResponse(url=spider.driver.current_url, body=spider.driver.page_source, encoding='utf-8', request=request)
 

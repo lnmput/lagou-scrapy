@@ -6,7 +6,9 @@ from datetime import datetime
 
 from Yangzie.items import LagouItemLoader, LagouItem
 from Yangzie.common.helper import get_md5
-
+from selenium import webdriver
+from scrapy.xlib.pydispatch import dispatcher
+from scrapy import signals
 
 
 class LagouSpider(CrawlSpider):
@@ -21,8 +23,14 @@ class LagouSpider(CrawlSpider):
     )
 
     def __init__(self):
+        self.driver = webdriver.Chrome()
+        super(LagouSpider, self).__init__()
+        # 当爬虫退出的时候退出
+        dispatcher.connect(self.spider_closed, signals.spider_closed)
 
-
+    def spider_closed(self, spider):
+        print("spider closed")
+        self.driver.quit()
 
 
     def parse_job(self, response):
