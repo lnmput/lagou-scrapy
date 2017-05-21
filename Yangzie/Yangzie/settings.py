@@ -53,7 +53,8 @@ COOKIES_ENABLED = False
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-   'Yangzie.middlewares.RandomUserAgentMiddlware': 543,
+   #'Yangzie.middlewares.RandomUserAgentMiddlware': 543,
+   'Yangzie.middlewares.JsPageMIddlware': 1,
    #'Yangzie.middlewares.MyCustomDownloaderMiddleware': 543,
 }
 RANDOM_UA_TYPE = 'random'

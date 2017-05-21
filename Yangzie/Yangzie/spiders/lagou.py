@@ -20,6 +20,11 @@ class LagouSpider(CrawlSpider):
         Rule(LinkExtractor(allow=r'jobs/\d+.html'), callback='parse_job', follow=True),
     )
 
+    def __init__(self):
+
+
+
+
     def parse_job(self, response):
         item_loader = LagouItemLoader(item=LagouItem(), response=response)
         item_loader.add_css("title", ".job-name::attr(title)")
